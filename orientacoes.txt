@@ -1,0 +1,63 @@
+Foi gerada para cada estudante uma amostra de tamanho 2000, com dados referentes aos resultados do SAEB (ANEB - Prova Brasil) relativos às características e ao desempenho de estudantes do 5o. ano do Ensino Fundamental de escolas públicas brasileiras em 2017. As análises poderão ser realizadas em R (preferencialmente), Python, SAS, SPSS, STATA ou EXCEL.
+
+1. Comente sobre a coleta de dados do SAEB: população alvo, população acessível, características levantadas, método de coleta (no máximo 10 linhas).
+
+2. Liste as variáveis disponibilizadas na amostra que você recebeu (com seu número de matrícula) e classifique-as segundo o tipo.
+
+3. Escolha CINCO variáveis categóricas e apresente-as em forma tabular e gráfica. Comente os resultados.
+
+4. Para as variáveis quantitativas NOTA_LP e NOTA_MT apresente:
+
+Distribuição de frequências, com intervalos de classe
+Histograma
+Medidas de posição, variabilidade, assimetria e curtose.
+Box-plot
+Análise dos resultados, incluindo comentários sobre normalidade (não é para fazer testes de hipóteses).
+A apresentação da atividade deverá seguir normas ABNT de apresentação de relatórios de pesquisa.
+
+A atividade deverá ser enviada pela plataforma APRENDER3.
+
+DESCRIÇÃO DOS DADOS E VARIÁVEIS SELECIONADAS
+Os dados foram produzidos pelo INEP e estão disponíveis em (http://portal.inep.gov.br/web/guest/microdados).
+
+Para maiores informações sobre o SAEB (Prova Brasil), ler documento do usuário disponível na plataforma.
+
+Cada estudante receberá um arquivo em CSV com dados de uma amostra de 2000 estudantes do 5o. ano que participaram do SAEB (Aneb/Prova Brasil)l em 2017, com as seguintes variáveis:
+
+ANO: ano de realização do SAEB
+
+REGIAO: Região de localização da escola do estudante (Norte, Nordeste, Sudeste, Sul, Centro-Oeste)
+
+UF: Unidade da Federação de localização da escola do estudante
+
+MUNICIPIO: Município de localização da escola do estudante
+
+AREA: Área de localização da escola do estudante (capital ou interior)
+
+LOCAL: Localização da escola do estudante(urbana ou rural)
+
+DEPENDENCIA_ADM : Categoria administrativa da escola do estudante (Federal, Estadual, Municipal)
+
+NOTA_LP: Proficiência em Língua Portuguesa transformada na escala única do SAEB, com média = 250, desvio = 50 (do SAEB/97)
+
+NOTA_MT: Proficiência do aluno em Matemática transformada na escala única do SAEB, com média = 250, desvio = 50 (do SAEB/97)
+
+SEXO: Sexo do estudante (Masculino, Feminino)
+
+RACA_COR: Raça/cor do estudante (Branca, Preta, Parda, Amarela, Indígena, Não quero declarar)
+
+IDADE:  Idade do estudante (8 anos ou menos, 9 anos, ...., 15 anos ou mais)
+
+COMPUTADOR: Tem computador em casa? (Não tem, Sim, um, Sim, dois, Sim, três, Sim, quatro ou mais)
+
+MORA_MAE: Você mora com sua mãe? (Sim, Não, Não, mas moro com outra mulher responsável por mim)
+
+MORA_PAI: Você mora com seu pai? (Sim, Não, Não, mas moro com outra homem responsável por mim)
+
+REUNIÕES_ESCOLARES: Frequência dos pais, ou responsáveis à reunião de pais? (Sempre ou quase sempre, De vez em quando, Nunca ou quase nunca)
+
+USO_TEMPO_TELAS: Tempo gasto assistindo à TV, navegando na internet ou jogando jogos eletrônicos em dias de aula (Menos de 1 hora, Entre 1 e 2 horas, Mais de 2 horas, até 3 horas, Mais de 3 horas, Não vejo TV, não navego na internet e não jogo jogos eletrônicos)
+
+AFAZERES_DOM:  Tempo gasto fazendo trabalhos domésticos (ex.: lavando louça, limpando o quintal etc.) em dias de aula (Menos de 1 hora, Entre 1 e 2 horas, Mais de 2 horas, até 3 horas, Mais de 3 horas, Não faço trabalhos domésticos)
+
+BIBLIOTECA: Você utiliza a biblioteca ou sala de leitura da sua escola? (Sempre ou quase sempre, De vez em quando, Nunca ou quase nunca, A escola não possui biblioteca ou sala de leitura)
