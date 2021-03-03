@@ -1,11 +1,10 @@
 # Resultados do SAEB (ANEB - Prova Brasil) 2017
 
 ## **Descrição:**
-Descrição.
+Análise descritiva de dados: Resultados do SAEB (ANEB - Prova Brasil) 2017. Estudo desenvolvido como objeto de avaliação para disciplina de Métodos Estatísticos 2.
 
 ## **Arquivos:**
-Contendo os documento de geração do slide e o pdf para você não precisar baixar
-os arquivos e esperar rodar o markdown.
+O diretório inclui o arquivo "Código.R" com a elaboração de gráficos e cálculos e inclui a pasta "Outros arquivos" onde estão as orientações, imagens (dos gráficos) geradas pelo código e o banco de dados utilizado. 
 
 ## **Links úteis:**
 
