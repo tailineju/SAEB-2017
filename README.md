@@ -1,4 +1,4 @@
-# RESULTADOS DO SAEB (ANEB - PROVA BRASIL) 2017
+# Resultados do SAEB (ANEB - Prova Brasil) 2017
 
 ## **Descrição:**
 Descrição.
