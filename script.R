@@ -14,10 +14,33 @@ read.delim("orientacoes.txt", encoding = "UTF-8")
 
 # Dados ----
 
-dados <- read.csv("amostra_190038144.csv", encoding = "UTF-8", 
+dados <- read.csv("amostra.csv", encoding = "UTF-8", 
                   na.strings=c(" ","NA"))
 dados$NOTA_LP <- as.numeric(dados$NOTA_LP)
 dados$NOTA_MT <- as.numeric(dados$NOTA_MT)
+
+# Limpeza das variáveis a serem analisadas ----
+dados$REGIAO <- dados$REGIAO%>% 
+  str_replace("1", "Norte")%>% 
+  str_replace("2", "Nordeste")%>% 
+  str_replace("3", "Sudeste")%>% 
+  str_replace("4", "Sul")%>% 
+  str_replace("5", "Centro-Oeste")
+
+dados$SEXO <- dados$SEXO%>% 
+  str_replace("A", "Masculino")%>% 
+  str_replace("B", "Feminino")
+
+dados$IDADE <- dados$IDADE %>% 
+  str_replace("A", "8 anos ou menos")%>% 
+  str_replace("B", "9 anos")%>% 
+  str_replace("C", "10 anos")%>% 
+  str_replace("D", "11 anos")%>% 
+  str_replace("E", "12 anos")%>% 
+  str_replace("F", "13 anos")%>% 
+  str_replace("G", "14 anos")%>% 
+  str_replace("H", "15 anos ou mais")
+
 
 # Liste as variaveis ----
 
@@ -78,18 +101,45 @@ ggsave("imagens/sexo.png", width = 158, height = 93, units = "mm")
 
 #3 IDADE
 
+#TA DANDO ERRADOOOOOOOO
+tabela3 <- dados %>%
+  group_by(IDADE) %>%
+  summarise(Ni= n())%>%
+  mutate(Fi =round((Ni/sum(Ni))*100,2))
+percent <- str_c(tabela3$Ni, " (",tabela3$Fi, "%",")")%>%str_replace("\\.",",")
+percent <- percent[1:8] #tirar NAs
 
-tabela3 <- dados %>% 
-  group_by(IDADE) %>% 
+tabela3%>%
+  drop_na()%>%#tirar NAs
+  ggplot(aes(x = IDADE, y = Fi, label = percent))+  
+  geom_bar(stat = "identity", fill = "#7aa3cc") +
+  geom_text(vjust = 0.5,hjust=-0.02, size = 3) +
+  scale_y_continuous(limits = c(0,50), 
+                     breaks = seq(0,50,10),
+                     labels = paste0(seq(0,50,10),"%"))+  
+  labs(x = "Idade", y = "Frequência Relativa") +
+  theme_bw() +
+  theme(
+    axis.title.y = element_text(colour = "black", size = 12),
+    axis.title.x = element_text(colour = "black", size = 12),
+    axis.text = element_text(colour = "black", size = 9.5),
+    panel.border = element_blank(),
+    axis.line = element_line(colour = "black"))+
+  coord_flip()
+ggsave("imagens/idade_bar.png", width = 158, height = 93, units = "mm")
+
+#opção radar chart
+tabela31 <- dados %>%
+  group_by(IDADE) %>%
   summarise(Ni= n())
-
-tabela3 <- tabela3%>%
+tabela31 <- tabela31%>%
+  drop_na()%>%
   gather(IDADE,Ni)%>%
   spread(IDADE,Ni)
-tabela3 <- rbind(rep(max(tabela3),length(tabela3)) , rep(0,length(tabela3)), tabela3)
+tabela31 <- rbind(rep(max(tabela31),length(tabela31)) , rep(0,length(tabela31)), tabela31)
 
 png("imagens/idade.png")
-radarchart(tabela3, axistype=1, 
+radarchart(tabela31, axistype=1, 
            pcol=rgb(.48,.64,.80,0.9) , pfcol=rgb(.48,.64,.80,0.7), 
            plwd=4, cglcol="grey", cglty=1, axislabcol="grey", 
            caxislabels=seq(0,1104,184), cglwd=0.8, vlcex=0.8 )
