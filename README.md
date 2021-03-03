@@ -8,5 +8,5 @@ O diretório inclui o arquivo "Código.R" com a elaboração de gráficos e cál
 
 ## **Links úteis:**
 
--> Descrição: [link](www.github.com/tailineju) 
+-> Sobre o SAEB: [INEP](https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb) 
 
