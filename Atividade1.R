@@ -4,13 +4,9 @@
 library(tidyverse)
 library(dplyr)
 library(stringr)
-library(fmsb)
+library(janitor)
 
 setwd("\\Users\\taili\\Documents\\Academia\\UnB\\4SEM\\ME2\\A1")
-
-# Orientacoes ----
-
-read.delim("Outros arquivos/orientacoes.txt", encoding = "UTF-8")
 
 # Dados ----
 
@@ -18,9 +14,6 @@ dados <- read.csv("Outros arquivos/amostra.csv", encoding = "UTF-8",
                   na.strings=c(" ","NA"))
 
 # Limpeza das variáveis a serem analisadas ----
-
-dados$NOTA_LP <- as.numeric(dados$NOTA_LP)
-dados$NOTA_MT <- as.numeric(dados$NOTA_MT)
 
 dados$REGIAO <- dados$REGIAO%>% 
   str_replace("1", "Norte")%>% 
@@ -84,6 +77,54 @@ for (i in 1:2000){
     dados$MORA_PAI[i] <- dados$MORA_PAI[i] %>% str_replace("C", "Não, com homem responsável")} 
 }
 
+dados$FAIXAS_LP <- cut(dados$NOTA_LP,
+                       breaks = seq(94,344,50),
+                       labels = c("94 a 143",
+                                  "144 a 193",
+                                  "194 a 243",
+                                  "244 a 293",
+                                  "294 a 334"),
+                       include.lowest = TRUE) 
+
+dados$FAIXAS_MT <- cut(dados$NOTA_MT,
+                   breaks = seq(112,357,49),
+                   labels = c("112 a 160",
+                              "161 a 209",
+                              "210 a 258",
+                              "259 a 307",
+                              "308 a 355"),
+                   include.lowest = TRUE) 
+
+
+# Funções de Assimetria e Curtose----
+coef.assimetria_LP <-function(x){
+  n<-length(dados$NOTA_LP)
+  s<-sd(dados$NOTA_LP)
+  m<-mean(dados$NOTA_LP)
+  n/((n-1)*(n-2))*sum((x-m)^3)/s^3
+}
+
+coef.curtose_LP <-function(x){  ## coeficiente de curtose
+  n<-length(dados$NOTA_LP)
+  s<-sd(dados$NOTA_LP)
+  m<-mean(dados$NOTA_LP)
+  (n*(n+1)/((n-1)*(n-2)*(n-3)))*sum((x-m)^4)/s^4-3*(n-1)^2/((n-2)*(n-3))
+}
+
+coef.assimetria_MT <-function(x){
+  n<-length(dados$NOTA_MT)
+  s<-sd(dados$NOTA_MT)
+  m<-mean(dados$NOTA_MT)
+  n/((n-1)*(n-2))*sum((x-m)^3)/s^3
+}
+
+coef.curtose_MT <-function(x){  ## coeficiente de curtose
+  n<-length(dados$NOTA_MT)
+  s<-sd(dados$NOTA_MT)
+  m<-mean(dados$NOTA_MT)
+  (n*(n+1)/((n-1)*(n-2)*(n-3)))*sum((x-m)^4)/s^4-3*(n-1)^2/((n-2)*(n-3))
+}
+
 # Liste as variaveis ----
 
 tipo <- c("listar")
@@ -97,7 +138,8 @@ colnames(var) <- c("Variavel","Tipo")
 tabela1 <- dados %>% 
   group_by(REGIAO) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
 percent <- str_c(tabela1$Ni, " (",tabela1$Fi, "%",")")%>%str_replace("\\.",",")
 
 tabela1%>%
@@ -122,7 +164,8 @@ ggsave("Outros arquivos/imagens/regioes.png", width = 158, height = 93, units = 
 tabela2 <- dados %>% 
   group_by(SEXO) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
 percent <- str_c(tabela2$Ni, " (",tabela2$Fi, "%",")")%>%str_replace("\\.",",")
 
 tabela2%>%
@@ -148,7 +191,8 @@ ggsave("Outros arquivos/imagens/sexo.png", width = 158, height = 93, units = "mm
 tabela3 <- dados %>%
   group_by(IDADE) %>%
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
 percent <- str_c(tabela3$Ni, " (",tabela3$Fi, "%",")")%>%str_replace("\\.",",")
 percent <- percent[1:8] #tirar NAs
 
@@ -193,7 +237,8 @@ dev.off()
 tabela4 <- dados %>% 
   group_by(RACA_COR) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
 percent <- str_c(tabela4$Ni, " (",tabela4$Fi, "%",")")%>%str_replace("\\.",",")
 percent <- percent[1:6] #tirar NAs
 
@@ -220,10 +265,11 @@ ggsave("Outros arquivos/imagens/racial.png", width = 158, height = 93, units = "
 tabela5 <- dados %>% 
   group_by(MORA_MÃE,MORA_PAI) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))
-tabela5 <- drop_na(tabela5) 
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
 
 tabela5%>%
+  drop_na()%>%
   ggplot(aes(x=reorder(MORA_MÃE,-Ni), y=Ni, fill=reorder(MORA_PAI,-Ni), label=Ni))+ 
   geom_col(position = position_dodge2(preserve = 'single', padding = 0)) + 
   scale_fill_manual(name="Mora com o pai", values=c("#7AA3CC", "#003366","#000000")) +
@@ -244,8 +290,13 @@ ggsave("Outros arquivos/imagens/moradia.png", width = 158, height = 93, units = 
 # NOTA_LP ----
 
 # Distribuição de frequências, com intervalos de classe
+tabela6 <- dados %>%
+  group_by(FAIXAS_LP) %>%
+  summarise(Ni= n())%>%
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
+
 # Histograma
-hist(dados$NOTA_LP)
 
 ggplot(dados, aes(x=NOTA_LP)) + 
   geom_histogram(colour="white", fill="#7AA3CC",binwidth=26)+
@@ -261,7 +312,10 @@ ggsave("Outros arquivos/imagens/hist_lp.png", width = 158, height = 93, units = 
 
 # Medidas de posição, variabilidade, assimetria e curtose.
 summary(dados$NOTA_LP)
-sd(dados$NOTA_LP)
+sd(dados$NOTA_LP)^2
+
+coef.assimetria_LP(dados$NOTA_LP)
+coef.curtose_LP(dados$NOTA_LP)
 
 # Box-plot
 
@@ -282,8 +336,13 @@ ggsave("Outros arquivos/imagens/box_lp.png", width = 158, height = 93, units = "
 # NOTA_MT ----
 
 # Distribuição de frequências, com intervalos de classe
+tabela7 <- dados %>%
+  group_by(FAIXAS_MT) %>%
+  summarise(Ni= n())%>%
+  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  adorn_totals("row")
+
 # Histograma
-hist(dados$NOTA_MT)
 
 ggplot(dados, aes(x=NOTA_MT)) + 
   geom_histogram(colour="white", fill="#7AA3CC",binwidth=26)+
@@ -299,7 +358,10 @@ ggsave("Outros arquivos/imagens/hist_mt.png", width = 158, height = 93, units = 
 
 # Medidas de posição, variabilidade, assimetria e curtose.
 summary(dados$NOTA_MT)
-sd(dados$NOTA_MT)
+sd(dados$NOTA_MT)^2
+
+coef.assimetria_MT(dados$NOTA_MT)
+coef.curtose_MT(dados$NOTA_MT)
 
 # Box-plot
 
