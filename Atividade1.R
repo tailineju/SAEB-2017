@@ -251,7 +251,7 @@ tabela4%>%
 ggsave("Outros arquivos/imagens/racial.png", width = 158, height = 93, units = "mm")
 
 #5 MORA PAI/MÃE----
-#fazer dois gráficos
+
 tabela5 <- dados %>% 
   group_by(MORA_MÃE,MORA_PAI) %>% 
   summarise(Ni= n())%>%
@@ -298,8 +298,9 @@ tabela6 <- dados %>%
 # Histograma
 
 ggplot(dados, aes(x=NOTA_LP)) + 
-  geom_histogram(colour="white", fill="#7AA3CC",binwidth=26)+
-  labs(x="Nota em Língua Portuguesa", y="Frequência Absoluta") +
+  geom_histogram(aes(y=..density..),colour="white", fill="#7AA3CC",binwidth=26)+
+  geom_density()+
+  labs(x="Nota em Língua Portuguesa", y="Densidade") +
   theme_bw() +
   theme(axis.title.y=element_text(colour="black", size=12),
         axis.title.x = element_text(colour="black", size=12),
@@ -344,8 +345,9 @@ tabela7 <- dados %>%
 # Histograma
 
 ggplot(dados, aes(x=NOTA_MT)) + 
-  geom_histogram(colour="white", fill="#7AA3CC",binwidth=26)+
-  labs(x="Nota em Matemática", y="Frequência Absoluta") +
+  geom_histogram(aes(y=..density..),colour="white", fill="#7AA3CC",binwidth=26)+
+  geom_density()+  
+  labs(x="Nota em Matemática", y="Densidade") +
   theme_bw() +
   theme(axis.title.y=element_text(colour="black", size=12),
         axis.title.x = element_text(colour="black", size=12),
