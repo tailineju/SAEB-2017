@@ -128,7 +128,7 @@ coef.curtose_MT <-function(x){  ## coeficiente de curtose
 # Liste as variaveis ----
 
 tipo <- c("listar")
-var <- data.frame(colnames(dados),list(1:19))
+var <- data.frame(colnames(dados),list(1:21))
 colnames(var) <- c("Variavel","Tipo")
 
 # Categoricas ----
@@ -138,8 +138,8 @@ colnames(var) <- c("Variavel","Tipo")
 tabela1 <- dados %>% 
   group_by(REGIAO) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
-  adorn_totals("row")
+  mutate(Fi =round((Ni/sum(Ni))*100,2))#%>%
+  adorn_totals("row") #não funciona para realização dos gráficos (com este código), mas é bom para ter uma ideia geral da variável
 percent <- str_c(tabela1$Ni, " (",tabela1$Fi, "%",")")%>%str_replace("\\.",",")
 
 tabela1%>%
@@ -164,7 +164,7 @@ ggsave("Outros arquivos/imagens/regioes.png", width = 158, height = 93, units = 
 tabela2 <- dados %>% 
   group_by(SEXO) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  mutate(Fi =round((Ni/sum(Ni))*100,2))#%>%
   adorn_totals("row")
 percent <- str_c(tabela2$Ni, " (",tabela2$Fi, "%",")")%>%str_replace("\\.",",")
 
@@ -187,20 +187,23 @@ ggsave("Outros arquivos/imagens/sexo.png", width = 158, height = 93, units = "mm
 
 #3 IDADE ----
 
-#TA DANDO ERRADOOOOOOOO
 tabela3 <- dados %>%
   group_by(IDADE) %>%
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
-  adorn_totals("row")
+  mutate(Fi =round((Ni/sum(Ni))*100,2))#%>% 
+  adorn_totals("row") 
+
+#proporção de observações em branco
+tabela3[9,2:3]
+
 percent <- str_c(tabela3$Ni, " (",tabela3$Fi, "%",")")%>%str_replace("\\.",",")
 percent <- percent[1:8] #tirar NAs
 
 tabela3%>%
   drop_na()%>%#tirar NAs
-  ggplot(aes(x = IDADE, y = Fi, label = percent))+  
+  ggplot(aes(x = reorder(IDADE,-Fi), y = Fi, label = percent))+  
   geom_bar(stat = "identity", fill = "#7AA3CC") +
-  geom_text(vjust = 0.5,hjust=-0.02, size = 3) +
+  geom_text(vjust = 0.5,hjust=-0, size = 3) +
   scale_y_continuous(limits = c(0,50), 
                      breaks = seq(0,50,10),
                      labels = paste0(seq(0,50,10),"%"))+  
@@ -215,30 +218,17 @@ tabela3%>%
   coord_flip()
 ggsave("Outros arquivos/imagens/idade_bar.png", width = 158, height = 93, units = "mm")
 
-#opção radar chart
-tabela31 <- dados %>%
-  group_by(IDADE) %>%
-  summarise(Ni= n())
-tabela31 <- tabela31%>%
-  drop_na()%>%
-  gather(IDADE,Ni)%>%
-  spread(IDADE,Ni)
-tabela31 <- rbind(rep(max(tabela31),length(tabela31)) , rep(0,length(tabela31)), tabela31)
-
-png("Outros arquivos/imagens/idade.png")
-radarchart(tabela31, axistype=1, 
-           pcol=rgb(.48,.64,.80,0.9) , pfcol=rgb(.48,.64,.80,0.7), 
-           plwd=4, cglcol="grey", cglty=1, axislabcol="grey", 
-           caxislabels=seq(0,1104,184), cglwd=0.8, vlcex=0.8 )
-dev.off()
-
 #4 RAÇA/COR----
 
 tabela4 <- dados %>% 
   group_by(RACA_COR) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  mutate(Fi =round((Ni/sum(Ni))*100,2))#%>%
   adorn_totals("row")
+
+#proporção de observações em branco
+tabela4[7,2:3]
+
 percent <- str_c(tabela4$Ni, " (",tabela4$Fi, "%",")")%>%str_replace("\\.",",")
 percent <- percent[1:6] #tirar NAs
 
@@ -265,12 +255,21 @@ ggsave("Outros arquivos/imagens/racial.png", width = 158, height = 93, units = "
 tabela5 <- dados %>% 
   group_by(MORA_MÃE,MORA_PAI) %>% 
   summarise(Ni= n())%>%
-  mutate(Fi =round((Ni/sum(Ni))*100,2))%>%
+  mutate(Fi =round((Ni/sum(Ni))*100,2))#%>%
   adorn_totals("row")
+  
+#proporção de observações em branco
+NA.PAI <- is.na(dados$MORA_PAI)
+p.PAI <- length(NA.PAI[NA.PAI == TRUE])/2000*100
+
+NA.MAE <- is.na(dados$MORA_MÃE)
+p.MAE <- length(NA.MAE[NA.MAE == TRUE])/2000*100
+
 
 tabela5%>%
   drop_na()%>%
-  ggplot(aes(x=reorder(MORA_MÃE,-Ni), y=Ni, fill=reorder(MORA_PAI,-Ni), label=Ni))+ 
+  ggplot(aes(x=reorder(MORA_MÃE,-Ni), y=Ni, fill=reorder(MORA_PAI,-Ni), 
+             label=str_c(Fi, "%")%>%str_replace("\\.",",")))+ 
   geom_col(position = position_dodge2(preserve = 'single', padding = 0)) + 
   scale_fill_manual(name="Mora com o pai", values=c("#7AA3CC", "#003366","#000000")) +
   scale_y_continuous(limits = c(0,1190), expand = c(0,0), 
