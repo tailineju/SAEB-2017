@@ -1,0 +1,10 @@
+A partir de sua amostra de dados do SAEB 5o. ano, extraia 50 amostras aleatórias de tamanho 30, e outras 50 amostras aleatórias de tamanho 100 (total 100 amostras).
+
+Para cada amostra construa um IC 95% para:
+
+Proporção de alunos que estudam em escolas do interior
+Proporção de alunas (sexo feminino)
+Média Nota_LP
+Média Nota_MT
+Apresente graficamente esses IC 95% (agrupados por parâmetro e tamanho da amostra - total 8 gráficos).
+Verifique se esses IC 95% contêm o valor verdadeiro dos parâmetros estimados (suponha que o valor obtido na sua amostra (2000) para essas medidas sejam "parâmetros").
