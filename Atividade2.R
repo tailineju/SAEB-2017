@@ -13,7 +13,6 @@ pacman::p_load(tidyverse,dplyr,stringr,infer)
 
 #############################################################
 # VERIFICAR USO DE PARÂMETROS POPULACIONAIS NO IC           #
-# VERIFICAR FÓRMULA DE IC P/ PROPORÇÃO C/ AMOSTRA TAM. 100  #
 #############################################################
 
 # Dados ----
@@ -32,7 +31,7 @@ a.tam30 <- dados %>%
 # Amostras de tamanho 100 ----
 
 a.tam100 <- dados %>% 
-  rep_sample_n(size = 30, reps = 50, replace = FALSE)
+  rep_sample_n(size = 100, reps = 50, replace = FALSE)
 
 # Normal com 95% de confiança ----
 
@@ -44,20 +43,26 @@ z <- qnorm((1-.95)/2)
 p.interior <- (nrow(dados[dados$AREA == "2", ])/2000)
 
 # Intervalos - n=30
-interior_a30 <- a.tam30[a.tam30$AREA == "2", ]
 
-ic.interior_a30 <- interior_a30 %>%
-  summarise(superior=(length(replicate)/30)- z*sqrt(((length(replicate)/30)*(1-(length(replicate)/30))/30)),
-            inferior = (length(replicate)/30)+z*sqrt(((length(replicate)/30)*(1-(length(replicate)/30))/30)))%>%
-  mutate(valor_verdadeiro = ifelse(p.interior < superior & p.interior > inferior, "Sim", "Não"))
+ic.interior_a30 <- a.tam30 %>%
+  filter(AREA == "2")%>%
+  summarise(n = n())%>%
+  summarise(n=n,p=n/30)%>%
+  mutate(superior = p - z*sqrt(p*(1-p)/30),
+         inferior = p + z*sqrt(p*(1-p)/30),
+         valor_verdadeiro = ifelse(p.interior < superior & p.interior > inferior,
+                                   "Sim", "Não"))
+
 
 # Intervalos - n=100
-interior_a100 <- a.tam100[a.tam100$AREA == "2", ]
-
-ic.interior_a100 <- interior_a100 %>%
-  summarise(superior=(length(replicate)/100)- z*sqrt(((length(replicate)/100)*(1-(length(replicate)/100))/100)),
-            inferior = (length(replicate)/100)+z*sqrt(((length(replicate)/100)*(1-(length(replicate)/100))/100)))%>%
-  mutate(valor_verdadeiro = ifelse(p.interior < superior & p.interior > inferior, "Sim", "Não"))
+ic.interior_a100 <- a.tam100 %>%
+  filter(AREA == "2")%>%
+  summarise(n = n())%>%
+  summarise(n=n,p=n/100)%>%
+  mutate(superior = p - z*sqrt(p*(1-p)/100),
+         inferior = p + z*sqrt(p*(1-p)/100),
+         valor_verdadeiro = ifelse(p.interior < superior & p.interior > inferior,
+                                   "Sim", "Não"))
 
 # Proporção de alunas (sexo feminino) ----
 
@@ -65,21 +70,24 @@ ic.interior_a100 <- interior_a100 %>%
 p.alunas <- (nrow(dados[dados$SEXO == "B", ])/2000)
 
 # Intervalos - n=30
-alunas_a30 <- a.tam30[a.tam30$SEXO == "B", ]
-
-ic.alunas_a30 <- alunas_a30 %>%
-  summarise(superior=(length(replicate)/30)- z*sqrt(((length(replicate)/30)*(1-(length(replicate)/30))/30)),
-            inferior = (length(replicate)/30)+z*sqrt(((length(replicate)/30)*(1-(length(replicate)/30))/30)))%>%
-  mutate(valor_verdadeiro = ifelse(p.alunas < superior & p.alunas > inferior, "Sim", "Não"))
+ic.alunas_a30 <- a.tam30 %>%
+  filter(SEXO == "B")%>%
+  summarise(n = n())%>%
+  summarise(n=n,p=n/30)%>%
+  mutate(superior = p - z*sqrt(p*(1-p)/30),
+         inferior = p + z*sqrt(p*(1-p)/30),
+         valor_verdadeiro = ifelse(p.alunas < superior & p.alunas > inferior,
+                                   "Sim", "Não"))
 
 # Intervalos - n=100
-alunas_a100 <- a.tam100[a.tam100$SEXO == "B", ]
-
-ic.alunas_a100 <- alunas_a100 %>%
-  summarise(superior=(length(replicate)/100)-z*sqrt(((length(replicate)/100)*(1-(length(replicate)/100))/100)),
-            inferior=(length(replicate)/100)-z*sqrt(((length(replicate)/100)*(1-(length(replicate)/100))/100)))%>%
-  mutate(valor_verdadeiro = ifelse(p.alunas < superior & p.alunas > inferior, "Sim", "Não"))
-
+ic.alunas_a100 <- a.tam100 %>%
+  filter(SEXO == "B")%>%
+  summarise(n = n())%>%
+  summarise(n=n,p=n/100)%>%
+  mutate(superior = p - z*sqrt(p*(1-p)/100),
+         inferior = p + z*sqrt(p*(1-p)/100),
+         valor_verdadeiro = ifelse(p.alunas < superior & p.alunas > inferior,
+                                   "Sim", "Não"))
 
 # Média Nota_LP ----
 
