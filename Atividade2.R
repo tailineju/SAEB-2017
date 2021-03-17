@@ -32,3 +32,5 @@ for (i in 1:50){
 # Média Nota_LP ----
 
 # Média Nota_MT ----
+
+#links https://ggplot2.tidyverse.org/reference/geom_linerange.html
