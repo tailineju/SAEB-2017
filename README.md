@@ -6,7 +6,7 @@ Análise de dados: Resultados do SAEB (ANEB - Prova Brasil) 2017. Estudos desenv
 ## **Atividade 1.3**
 Análise descritiva: O diretório inclui o arquivo "Atividade1.R" com a elaboração de gráficos e cálculos propostos na Atividade 1.3.
 
-## **Atividade 2.2 **
+## **Atividade 2.2**
 Estimação de parâmetros: O diretório inclui o arquivo "Atividade2.R" com a elaboração de gráficos e cálculos propostos na Atividade 2.2.
 
 ## **Outros arquivos:**
