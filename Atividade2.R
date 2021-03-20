@@ -68,7 +68,9 @@ ic.interior_a30 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_interior30.png", width = 158, height = 93, units = "mm")
 
 # Intervalos - n=100
@@ -99,7 +101,9 @@ ic.interior_a100 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_interior100.png", width = 158, height = 93, units = "mm")
 
 
@@ -137,7 +141,9 @@ ic.alunas_a30 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_alunas30.png", width = 158, height = 93, units = "mm")
 
 
@@ -170,7 +176,9 @@ ic.alunas_a100 %>%
     axis.title.x = element_text(colour = "black", size = 12),
     axis.text = element_text(colour = "black", size = 9.5),
     panel.border = element_blank(),
-    axis.line = element_line(colour = "black"))
+    axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_alunas100.png", width = 158, height = 93, units = "mm")
 
 # Média Nota_LP ----
@@ -204,7 +212,9 @@ ic.lp_a30 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_lp30.png", width = 158, height = 93, units = "mm")
 
 # Intervalos - n=100
@@ -233,7 +243,9 @@ ic.lp_a100 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_lp100.png", width = 158, height = 93, units = "mm")
 
 # Média Nota_MT ----
@@ -267,7 +279,9 @@ ic.mt_a30 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_mt30.png", width = 158, height = 93, units = "mm")
 
 # Intervalos - n=100
@@ -296,5 +310,7 @@ ic.mt_a100 %>%
         axis.title.x = element_text(colour = "black", size = 12),
         axis.text = element_text(colour = "black", size = 9.5),
         panel.border = element_blank(),
-        axis.line = element_line(colour = "black"))
+        axis.line = element_line(colour = "black"))+
+  theme(legend.position = "top")+
+  coord_flip()
 ggsave("Outros arquivos/imagens/ic_mt100.png", width = 158, height = 93, units = "mm")
