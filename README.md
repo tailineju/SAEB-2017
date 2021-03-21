@@ -1,7 +1,7 @@
 # Resultados do SAEB (ANEB - Prova Brasil) 2017
 
 ## **Descrição:**
-*Análise de dados:* Resultados do SAEB (ANEB - Prova Brasil) 2017. Estudos desenvolvidos como objetos de avaliação para disciplina de Métodos Estatísticos 2.
+*Análise de dados:* Estudos desenvolvidos como objetos de avaliação para disciplina de Métodos Estatísticos 2.
 
 ## **Atividade 1.3**
 *Análise descritiva:* O diretório inclui o arquivo "Atividade1.R" com a elaboração de gráficos e cálculos propostos na Atividade 1.3.
