@@ -14,5 +14,5 @@ Na pasta "*Outros arquivos*" estão inclusas as orientações, imagens (dos grá
 
 ## **Links úteis:**
 
--> Sobre o SAEB: [INEP](https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb) 
+-> Informações sobre os dados: [SAEB](https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb) 
 
