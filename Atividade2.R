@@ -1,5 +1,5 @@
 ####################################################
-#            TAILINE NONATO - 190038144            #
+#                 TAILINE NONATO                   #
 #                  ATIVIDADE 2.2                   #
 ####################################################
 
@@ -9,11 +9,7 @@ if (!require(pacman)) {
   install.packIdades("pacman")
   library(pacman)}
 
-pacman::p_load(tidyverse,dplyr,stringr,infer)
-
-#############################################################
-# VERIFICAR USO DE PARÂMETROS POPULACIONAIS NO IC           #
-#############################################################
+pacman::p_load(tidyverse,dplyr)
 
 # Dados ----
 
@@ -54,15 +50,19 @@ ic.interior_a30 <- data.frame(id = c(1:50, 1:50),
                             intervalo = c(ic.interior_a30$superior, ic.interior_a30$inferior),
                             legenda = c(ic.interior_a30$valor_verdadeiro, ic.interior_a30$valor_verdadeiro))
 
+
 ic.interior_a30 %>%
   ggplot(aes(x=intervalo, y=id, group=id, color=legenda)) +
   geom_point(size = 1) +  
   geom_line(size=.74) +
-  scale_colour_manual(name="Contém proporção Parâmetro populacional", values = c("#003366", "#7AA3CC"))+
-  labs(x="Intervalos de Confiança", y="Amostras",
-       title="Proporção de estudantes em escolas do interior",
-       subtitle="Amostra de tamanho 30") +
+  scale_colour_manual(name="Contém proporção populacional", values = c("#003366", "#7AA3CC"))+
+  labs(x="Intervalos de Confiança", y="Amostras"#,
+       #title="Proporção de estudantes em escolas do interior",
+       #subtitle="Amostra de tamanho 30"
+       ) +
   geom_vline(xintercept = p.interior, color = "black")+
+  annotate(x = p.interior,y=0, label=expression(p == 0.806),
+           geom="text",angle=0,vjust=0,hjust=.7, size=2.5) +
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
         axis.title.x = element_text(colour = "black", size = 12),
@@ -91,11 +91,14 @@ ic.interior_a100 %>%
   ggplot(aes(x=intervalo, y=id, group=id, color=legenda)) +
   geom_point(size = 1) +  
   geom_line(size = .74) +
-  scale_colour_manual(name="Contém proporção Parâmetro populacional", values = c("#003366", "#7AA3CC"))+
-  labs(x="Intervalos de Confiança", y="Amostras",
-       title="Proporção de estudantes em escolas do interior",
-       subtitle="Amostra de tamanho 100") +
+  scale_colour_manual(name="Contém proporção populacional", values = c("#003366", "#7AA3CC"))+
+  labs(x="Intervalos de Confiança", y="Amostras"#,
+       #title="Proporção de estudantes em escolas do interior",
+       #subtitle="Amostra de tamanho 100"
+  ) +
   geom_vline(xintercept = p.interior, color = "black")+
+  annotate(x = p.interior,y=0, label=expression(p == 0.806),
+           geom="text",angle=0,vjust=0,hjust=.7, size=2.5) +
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
         axis.title.x = element_text(colour = "black", size = 12),
@@ -131,11 +134,13 @@ ic.alunas_a30 %>%
   ggplot(aes(x=intervalo, y=id, group=id, color=legenda)) +
   geom_point(size = 1) +  
   geom_line(size = .74) +
-  scale_colour_manual(name="Contém proporção Parâmetro populacional", values = c("#003366", "#7AA3CC"))+
+  scale_colour_manual(name="Contém proporção populacional", values = c("#003366", "#7AA3CC"))+
   labs(x="Intervalos de Confiança", y="Amostras",
        title="Proporção de estudantes meninas",
        subtitle="Amostra de tamanho 30") +
   geom_vline(xintercept = p.alunas, color = "black")+
+  annotate(x = p.alunas,y=0, label=expression(p == 0.501),
+           geom="text",angle=0,vjust=0,hjust=.7, size=2.5) +
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
         axis.title.x = element_text(colour = "black", size = 12),
@@ -165,12 +170,15 @@ ic.alunas_a100 %>%
   ggplot(aes(x=intervalo, y=id, group=id, color=legenda)) +
   geom_point(size = 1) +  
   geom_line(size = .74) +
-  scale_colour_manual(name="Contém proporção Parâmetro populacional", 
+  scale_colour_manual(name="Contém proporção populacional", 
                       values = c("#003366", "#7AA3CC"))+
-  labs(x="Intervalos de Confiança", y="Amostras",
-       title="Proporção de estudantes meninas",
-       subtitle="Amostra de tamanho 100") +
+  labs(x="Intervalos de Confiança", y="Amostras"#,
+       #title="Proporção de estudantes meninas",
+       #subtitle="Amostra de tamanho 100"
+  ) +
   geom_vline(xintercept = p.alunas, color = "black")+
+  annotate(x = p.alunas,y=0, label=expression(p == 0.501),
+           geom="text",angle=0,vjust=0,hjust=.7, size=2.5) +
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
     axis.title.x = element_text(colour = "black", size = 12),
@@ -203,9 +211,12 @@ ic.lp_a30 %>%
   geom_line(size = .74) +
   scale_colour_manual(name="Contém média populacional", 
                       values = c("#003366", "#7AA3CC"))+
-  labs(x="Intervalos de Confiança", y="Amostras",
-       title="Nota média em Língua Portuguesa",
-       subtitle="Amostra de tamanho 30") +
+  labs(x="Intervalos de Confiança", y="Amostras"#,
+       #title="Nota média em Língua Portuguesa",
+       #subtitle="Amostra de tamanho 30"
+       ) +
+  annotate(x = m.lp,y=0, label=expression(mu == 214.56),
+           geom="text",angle=0,vjust=0,hjust=.6, size=2.5) +
   geom_vline(xintercept = m.lp, color = "black")+
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
@@ -234,9 +245,12 @@ ic.lp_a100 %>%
   geom_line(size = .74) +
   scale_colour_manual(name="Contém média populacional", 
                       values = c("#003366", "#7AA3CC"))+
-  labs(x="Intervalos de Confiança", y="Amostras",
-       title="Nota média em Língua Portuguesa",
-       subtitle="Amostra de tamanho 100") +
+  labs(x="Intervalos de Confiança", y="Amostras"#,
+       #title="Nota média em Língua Portuguesa",
+       #subtitle="Amostra de tamanho 100"
+  ) +
+  annotate(x = m.lp,y=0, label=expression(mu == 214.56),
+           geom="text",angle=0,vjust=0,hjust=.6, size=2.5) +
   geom_vline(xintercept = m.lp, color = "black")+
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
@@ -273,6 +287,8 @@ ic.mt_a30 %>%
   labs(x="Intervalos de Confiança", y="Amostras",
        title="Nota média em Matemática",
        subtitle="Amostra de tamanho 30") +
+  annotate(x = m.mt,y=0, label=expression(mu == 221.98),
+           geom="text",angle=0,vjust=0,hjust=.6, size=2.5) +
   geom_vline(xintercept = m.mt, color = "black")+
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
@@ -301,9 +317,12 @@ ic.mt_a100 %>%
   geom_line(size = .74) +
   scale_colour_manual(name="Contém média populacional", 
                       values = c("#003366", "#7AA3CC"))+
-  labs(x="Intervalos de Confiança", y="Amostras",
-       title="Nota média em Matemática",
-       subtitle="Amostra de tamanho 100") +
+  labs(x="Intervalos de Confiança", y="Amostras"#,
+       #title="Nota média em Matemática",
+       #subtitle="Amostra de tamanho 100"
+  ) +
+  annotate(x = m.mt,y=0, label=expression(mu == 221.98),
+           geom="text",angle=0,vjust=0,hjust=.6, size=2.5) +
   geom_vline(xintercept = m.mt, color = "black")+
   theme_bw() +
   theme(axis.title.y = element_text(colour = "black", size = 12),
