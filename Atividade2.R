@@ -6,7 +6,7 @@
 
 # Carregando pacotes ----
 if (!require(pacman)) {
-  install.package("pacman")
+  install.packages("pacman")
   library(pacman)}
 
 pacman::p_load(tidyverse,dplyr)
