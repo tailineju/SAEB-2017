@@ -1,0 +1,14 @@
+1. Testes de Kolmogorov para normalidade
+
+Gere 1000 (mil) amostras de tamanho 15 de uma variável normalmente distribuída com média μ e desvio padrão σ.
+A média μ deverá ser gerada aleatoriamente no intervalo entre 100 e 200
+Para o cálculo do desvio padrão considere um CV igual a 10%.
+Para cada amostra, obtenha a Estatística de Teste, tipo Kolomogorov (considere teste bicaudal)
+CASO 1: considere que a Função de distribuição Normal está totalmente especificada, ou seja, utilize os valores da média e desvio padrão considerados para a geração das amostras
+CASO 2: considere que a Função de distribuição Normal não foi especificada, e você deverá estimar a média e o desvio padrão a partir dos dados amostrais.
+Você terá dois conjuntos de 1000 estimativas da estatística de teste, tipo Kolmogorov
+Para cada conjunto de estimativas da estatística de teste, faça uma análise descritiva (apresente gráficos), obtenha os quantis 80%, 85%, 90%, 95%, 97,5%, 99%, e compare com os quantis tabelados (Tabelas do Conover) segundo cada caso. Comente os resultados.
+2. Testes para normalidade: Shapiro-Wilk e Anderson-Darling
+
+Escolha 5 amostras geradas anteriormente, e teste normalidade utilizando Shapiro-Wilk e Anderson-Darling.
+Compare com os resultados anteriores e comente os resultados
