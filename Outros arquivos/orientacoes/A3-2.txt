@@ -1,5 +1,7 @@
 Escolha duas subamostras geradas na atividade 2.2 (uma com n= 30 e a outra com n=100):
 
-Para a amostra com n=100, construa uma distribuição de frequências para uma das variáveis nota em língua portuguesa ou em matemática (como na Atividade 1.3; escolher uma das variáveis) e verifique se os dados podem ser descritos pela distribuição Normal.
-Teste normalidade das variáveis notas em língua portuguesa e matemática para a amostra (n=30). Apresente os testes de Shapiro-Wilk, Anderson-Darling e Kolmogorov (Lilliefors). 
-Comente os resultados obtidos, à luz da análise descritiva realizada com a amostra com 2000 observações (Atividade 1.3).
+> Para a amostra com n=100, construa uma distribuição de frequências para uma das variáveis nota em língua portuguesa ou em matemática (como na Atividade 1.3; escolher uma das variáveis) e verifique se os dados podem ser descritos pela distribuição Normal.
+
+> Teste normalidade das variáveis notas em língua portuguesa e matemática para a amostra (n=30). Apresente os testes de Shapiro-Wilk, Anderson-Darling e Kolmogorov (Lilliefors). 
+
+> Comente os resultados obtidos, à luz da análise descritiva realizada com a amostra com 2000 observações (Atividade 1.3).
