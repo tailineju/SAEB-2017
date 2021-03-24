@@ -1,16 +1,24 @@
 # Resultados do SAEB (ANEB - Prova Brasil) 2017
 
 ## **Descrição:**
-*Análise de dados:* Estudos desenvolvidos como objetos de avaliação para disciplina de Métodos Estatísticos 2.
+**Análise de dados:** Estudos desenvolvidos como objetos de avaliação para disciplina de *Métodos Estatísticos 2*.
 
-## **Atividade 1.3**
-*Análise descritiva:* O diretório inclui o arquivo "Atividade1.R" com a elaboração de gráficos e cálculos propostos na Atividade 1.3.
+## **Códigos**
+| ARQUIVO        | ATIVIDADE| DESCRIÇÃO |
+|----------------|----------|-----------------------|
+|`Atividade1.R`  |  1.3     |Análise descritiva     |
+|`Atividade2.R`  |  2.2     |Estimação de parâmetros|
+|`Atividade3-2.R`|  3.2     |Testes de aderência    |
+|`Atividade3-3.R`|  3.3     |Testes para normalidade|
 
-## **Atividade 2.2**
-*Estimação de parâmetros:* O diretório inclui o arquivo "Atividade2.R" com a elaboração de gráficos e cálculos propostos na Atividade 2.2.
 
 ## **Outros arquivos:**
-Na pasta "*Outros arquivos*" estão inclusas as orientações, imagens (dos gráficos) geradas pelos códigos, o banco de dados utilizado e os relatórios completos. 
+
+Na pasta "*Outros arquivos*" estão inclusas:
+- **Banco de dados** utilizado;
+- Orientações/descrições de cada atividade;
+- Imagens/gráficos gerados pelos códigos;
+- Relatórios completos.
 
 ## **Links úteis:**
 
