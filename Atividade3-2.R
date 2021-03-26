@@ -9,7 +9,7 @@ if (!require(pacman)) {
   install.packIdades("pacman")
   library(pacman)}
 
-pacman::p_load(tidyverse,dplyr,infer)
+pacman::p_load(tidyverse,dplyr,infer,nortest)
 
 # Dados ----
 
@@ -35,10 +35,23 @@ a100$FAIXAS_MT <- cut(a100$NOTA_MT,
 
 tabela1 <- a100 %>%
   group_by(FAIXAS_MT) %>%
-  summarise(Ni= n())
+  summarise(Ni= n()) %>%
+  mutate(Fi=Ni/sum(Ni), esp=5*Fi) #??????????????
+
+# como calcular valor esperado?
 
 # Verificação para normalidade ----
+# h0: Nota em matemática segue distribuição normal
+# ha: Nota em matemática não segue distribuição normal
 
+chi <-  ((tabela1$Ni-tabela1$esp)^2)/tabela1$esp
+
+chi.obs <- sum(chi)
+
+alpha <- .05
+chi.tab <- qchisq(1-alpha,5-1)
+
+chi.obs>chi.tab #se TRUE rejeitar h0
 
 # AMOSTRA TAMANHO 30 ----
 
@@ -47,16 +60,21 @@ a30 <- dados %>%
 
 # Shapiro-Wilk ----
 # NOTA_LP
+shapiro.test(amostra30$NOTA_LP)
 
 # NOTA_MT
+shapiro.test(amostra30$NOTA_MT)
 
 # Anderson-Darling ----
 # NOTA_LP
+ad.test(amostra30$NOTA_LP)
 
 # NOTA_MT
+ad.test(amostra30$NOTA_MT)
 
 # Kolmogorov ----
 # NOTA_LP
+ks.test(amostra30$NOTA_LP,"pnorm")
 
 # NOTA_MT
-
+ks.test(amostra30$NOTA_MT,"pnorm")
