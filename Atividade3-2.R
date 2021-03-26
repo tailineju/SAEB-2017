@@ -74,7 +74,7 @@ ad.test(amostra30$NOTA_MT)
 
 # Kolmogorov ----
 # NOTA_LP
-ks.test(amostra30$NOTA_LP,"pnorm")
+ks.test(amostra30$NOTA_LP,"pnorm") #verificar propósito do y
 
 # NOTA_MT
-ks.test(amostra30$NOTA_MT,"pnorm")
+ks.test(amostra30$NOTA_MT,"pnorm") #verificar propósito do y
