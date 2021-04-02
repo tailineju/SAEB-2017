@@ -51,7 +51,7 @@ tabela1 <- tabela1 %>%
 
 chi.obs <- sum(tabela1$chi)
 alpha <- .05
-chi.tab <- qchisq(1-alpha,5-1)
+chi.tab <- qchisq(1-alpha,5-1) #verificar graus de liberdade
 
 chi.obs>chi.tab #se TRUE rejeitar h0
 
