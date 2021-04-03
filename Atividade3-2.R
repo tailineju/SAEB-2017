@@ -9,7 +9,7 @@ if (!require(pacman)) {
   install.packages("pacman")
   library(pacman)}
 
-pacman::p_load(tidyverse,dplyr,infer,nortest)
+pacman::p_load(tidyverse,dplyr,infer,EnvStats)
 
 # AMOSTRA TAMANHO 100 ----
 
@@ -62,21 +62,22 @@ a30 <- read.csv("Outros arquivos/tam30.csv")%>%
 
 # Shapiro-Wilk ----
 # NOTA_LP
-shapiro.test(a30$NOTA_LP)
+gofTest(a30$NOTA_LP, test= "sf")
 
 # NOTA_MT
-shapiro.test(a30$NOTA_MT)
+gofTest(a30$NOTA_MT, test= "sf")
 
 # Anderson-Darling ----
+
 # NOTA_LP
-ad.test(a30$NOTA_LP)
+gofTest(a30$NOTA_LP, test= "ad")
 
 # NOTA_MT
-ad.test(a30$NOTA_MT)
+gofTest(a30$NOTA_MT, test= "ad")
 
 # Kolmogorov ----
 # NOTA_LP
-ks.test(a30$NOTA_LP,"pnorm") #verificar propósito do y
+gofTest(a30$NOTA_LP, test= "ks")
 
 # NOTA_MT
-ks.test(a30$NOTA_MT,"pnorm") #verificar propósito do y
+gofTest(a30$NOTA_MT, test= "ks")
