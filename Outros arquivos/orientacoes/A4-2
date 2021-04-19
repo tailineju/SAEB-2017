@@ -3,6 +3,14 @@
 * NOTA_MT e LOCALIZAÇÃO (Urbana e Rural)
 * NOTA_LP e DEPENDENCIA_ADM (Municipal, Estadual+Federal)
 
-Para avaliar essas relações construa os gráficos adequados e medidas de posição e variabilidade segundo categorias das variáveis qualitativas. Você diria que a proficiência em matemática é maior em escolas urbanas? Existe diferença entre as proficiências em língua portuguesa segundo categoria administrativa da escola? Considere os testes: t de Student, Wilcoxon-Mann-Whitney e Kolmogorov-Smirnov. (Não se esqueça de testar normalidade e homocedasticidade - fazer referência, se vc já analisou esses aspectos anteriormente)
+Para avaliar essas relações construa os gráficos adequados e medidas de posição e variabilidade segundo categorias das variáveis qualitativas. 
+
+Você diria que a proficiência em matemática é maior em escolas urbanas? 
+
+Existe diferença entre as proficiências em língua portuguesa segundo categoria administrativa da escola? 
+
+Considere os testes: t de Student, Wilcoxon-Mann-Whitney e Kolmogorov-Smirnov. 
+
+(Não se esqueça de testar normalidade e homocedasticidade - fazer referência, se vc já analisou esses aspectos anteriormente)
 
 2. Para a amostra de tamanho 30, verifique se há diferença entre as notas de língua portuguesa e matemática. Considere os testes: t de Student, Wilcoxon e Sinais. Comente os resultados.
