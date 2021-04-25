@@ -9,7 +9,9 @@ Os *scripts* utilizados em cada atividade estão organizados de acordo com a tab
 |`Atividade1.R`  |  1.3     |Análise descritiva     |
 |`Atividade2.R`  |  2.2     |Estimação de parâmetros|
 |`Atividade3-2.R`|  3.2     |Testes para normalidade|
-|`Atividade4-2.R`|  4.2     |Comparação entre duas populações |
+|`Atividade4-2.R`|  4.2     |Comparação entre duas populações|
+|`Atividade4-3.R`|  4.3     |Teste de Mann-Whitney-Wilcoxon|
+|`Atividade4-5.R`|  4.5     |Comparação entre várias populações|
 
 ## **Outros arquivos:**
 
