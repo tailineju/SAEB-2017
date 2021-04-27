@@ -76,6 +76,7 @@ sd(rural.100$NOTA_MT)
 
 #T de Student
 t.test(urb.100$NOTA_MT, rural.100$NOTA_MT)
+qt(.95,5000-2)
 
 #Wilcoxon
 wilcox.test(urb.100$NOTA_MT, rural.100$NOTA_MT)
