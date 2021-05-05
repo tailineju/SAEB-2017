@@ -1,0 +1,20 @@
+1. Considere uma amostra de tamanho 500. Relacione as seguintes variáveis:
+
+NOTA_MT e Região
+NOTA_LP e Uso do tempo de tela: considerar as seguintes categorias
+Não vê TV..... + Menos de 1 hora (juntar as duas categorias)
+Entre 1 e 2 horas
+Mais de 2, até 3 horas
+Mais de 3 horas
+* Exclui os valores faltantes
+
+
+Para avaliar essas relações construa os gráficos adequados e medidas de posição e variabilidade segundo categorias das variáveis qualitativas. 
+
+Você diria que existem diferenças entre as proficiências em matemática segundo a região geográfica da escola? 
+
+Existe diferença entre as proficiências em língua portuguesa segundo categoria de uso do tempo de tela?
+
+Apresente dois tipos de testes de hipóteses (ANOVA e Kruskal-Wallis), defina as hipóteses, pressupostos e comente os resultados. 
+
+Caso haja evidências que levam você a afirmar que existem diferenças, identifique essas diferenças. (Não se esqueça de testar normalidade e homocedasticidade, caso já tenha feito esses testes, comente).
