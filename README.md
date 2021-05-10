@@ -18,7 +18,6 @@ Na pasta "*Outros arquivos*" estão inclusas:
 - **Banco de dados** utilizado;
 - **Orientações**/descrições de cada atividade;
 - **Imagens**/gráficos gerados pelos códigos;
-- Relatórios completos.
 
 ## **Links úteis:**
 
