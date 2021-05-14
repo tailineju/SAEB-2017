@@ -22,10 +22,11 @@ theme.t <- function(position_legend = "top"){
     theme(legend.position=position_legend)))}
 
 #Dados ----
-pop <- read.csv("Outros arquivos/amostra.csv", encoding = "UTF-8", 
-                na.strings=c(" ","NA"))
+#pop <- read.csv("Outros arquivos/amostra.csv", encoding = "UTF-8", na.strings=c(" ","NA"))
+#amostra <- pop[sample(1:nrow(pop),500,replace=F),]
+#write.csv(amostra, file="Outros arquivos/tam500.csv")
 
-amostra <- pop[sample(1:nrow(pop),500,replace=F),]
+amostra <- read.csv("Outros arquivos/tam500.csv", encoding = "UTF-8", na.strings=c(" ","NA"))
 amostra <- amostra %>% na.omit(amostra$USO_TEMPO_TELAS)
 
 amostra$REGIAO <- amostra$REGIAO%>% 
@@ -50,13 +51,13 @@ for (i in 1:500){
 
 
 #Testes de Normalidade ----
-
 shapiro.test(amostra$NOTA_MT)
 
 shapiro.test(amostra$NOTA_LP)
 
 #Homocedasticidade ----
 bartlett.test (amostra$NOTA_MT~amostra$REGIAO)
+
 bartlett.test(amostra$NOTA_LP~amostra$USO_TEMPO_TELAS)
 
 # NOTA_MT vs REGIAO ----
