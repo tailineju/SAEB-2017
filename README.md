@@ -14,7 +14,7 @@ Os *scripts* utilizados em cada atividade estão organizados de acordo com a tab
 
 ## **Outros arquivos:**
 
-Na pasta "*Outros arquivos*" estão inclusas:
+Na pasta "*Outros arquivos*" estão inclusos:
 - **Banco de dados** utilizado;
 - **Orientações**/descrições de cada atividade;
 - **Imagens**/gráficos gerados pelos códigos;
