@@ -6,7 +6,6 @@ library(dplyr)
 library(stringr)
 library(janitor)
 
-setwd("\\Users\\taili\\Documents\\Academia\\UnB\\4SEM\\ME2\\A1")
 
 # Dados ----
 
