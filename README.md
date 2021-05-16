@@ -6,11 +6,11 @@ Os *scripts* utilizados em cada atividade estão organizados de acordo com a tab
 
 | ARQUIVO        | ATIVIDADE| DESCRIÇÃO |
 |----------------|----------|-----------------------|
-|`Atividade1.R`  |  1.3     |Análise descritiva     |
-|`Atividade2.R`  |  2.2     |Estimação de parâmetros|
-|`Atividade3-2.R`|  3.2     |Testes para normalidade|
-|`Atividade4-2.R`|  4.2     |Comparação entre duas populações|
-|`Atividade4-5.R`|  4.5     |Comparação entre várias populações|
+|`1-Analise-Descritiva.R`  |  1.3     |Análise descritiva     |
+|`2-Estimacao-Parametros.R`  |  2.2     |Estimação de parâmetros|
+|`3-Teste-Normalidade.R`|  3.2     |Testes para normalidade|
+|`4-Comparacao-Duas-Pop.R`|  4.2     |Comparação entre duas populações|
+|`5-Comparacao-Varias-Pop.R`|  4.5     |Comparação entre várias populações|
 
 ## **Outros arquivos:**
 
