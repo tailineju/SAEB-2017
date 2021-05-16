@@ -1,10 +1,15 @@
-####
-####
+####################################################
+#                 TAILINE NONATO                   #
+#                  ATIVIDADE 1                     #
+####################################################
 
-library(tidyverse)
-library(dplyr)
-library(stringr)
-library(janitor)
+
+#Carregando pacotes ----
+if (!require(pacman)) {
+  install.packages("pacman")
+  library(pacman)}
+
+pacman::p_load(tidyverse,dplyr,stringr,janitor)
 
 
 # Dados ----
