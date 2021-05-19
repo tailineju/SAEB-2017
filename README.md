@@ -21,4 +21,6 @@ Na pasta "*Outros arquivos*" estão inclusos:
 
 ## **Links úteis:**
 
--> [Sobre os dados do SAEB](https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb) 
+-> [Sobre os dados do SAEB](https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/saeb)
+
+-> [Artigo autoral (utilizando dados do SAEB)](https://github.com/tailineju/artigo-SAEB2017)
